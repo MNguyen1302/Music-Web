@@ -1,0 +1,62 @@
+<nav class="navbar">
+    <div class="search-box">
+        <form action="" method="GET" class="search-form">
+            <input type="search" placeholder="Search here...">
+            <i class="ri-search-line btn-search"></i>
+        </form>
+    </div>
+    <div class="auth-box">
+        <% if(locals.user) { %> 
+        <div class="user-container">
+            <div class="change-theme-container">
+                <div class="btn-change-theme">
+                    <i class="ri-t-shirt-2-line"></i>
+                </div>
+            </div>
+            <div class="notifications-container">
+                <div class="btn-notification">
+                    <i class="ri-notification-3-line"></i>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">
+                    <% if(user.avatar) { %> 
+                    <img src="<%= user.avatar %>" alt="">
+                    <% } else { %>
+                    <img src="/images/noavatar.svg" alt="">
+                    <% } %>
+                </div>
+                <div class="user-dropdown">
+                    <div class="user-choose">
+                        <a href="/profile">
+                            <i class="ri-user-line"></i>
+                            <span>Profile</span>
+                        </a>
+                    </div>
+                    <div class="user-choose">
+                        <a href="#">
+                            <i class="ri-settings-2-line"></i>
+                            <span>Setting</span>
+                        </a>
+                    </div>
+                    <div class="user-logout">
+                        <a href="/home">
+                            <i class="ri-logout-box-line"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } else { %>
+        <div class="btn-signin">
+            <a href="/auth/login" class="signup-link">
+                Sign In
+            </a>
+            <a href="/auth/register" class="signin-link">
+                <button>Sign Up</button>
+            </a>
+        </div>
+        <% } %>
+    </div>
+</nav>

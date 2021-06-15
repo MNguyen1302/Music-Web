@@ -1,0 +1,79 @@
+<div class="profile-container">
+    <div class="tabs-profile">
+        <div class="tab-profile-item active">
+            <span>Profile</span>
+        </div>
+        <div class="tab-profile-item">
+            <span>Edit information</span>
+        </div>
+        <div class="tab-profile-item">
+            <span>Change password</span>
+        </div>
+    </div>
+    <div class="tabs-profile-content">
+        <div class="tab-profile-pane active">
+            Halo
+        </div>
+        <div class="tab-profile-pane">
+            <form action="/profile/update?_method=PUT" method="POST" class="form-edit" enctype="multipart/form-data">
+                <div class="form-edit-avatar">
+                    <% if(user.avatar) { %> 
+                    <img src="<%= user.avatar %>" alt="">
+                    <% } else { %>
+                    <img src="/images/noavatar.svg" alt="">
+                    <% } %>
+                    <div class="image-edit">
+                        <i class="ri-image-edit-line"></i>
+                        <input name="avatar" type="file" class="file-upload">
+                    </div>
+                </div>
+                <div class="form-edit-information">
+                    <div class="input-edit">
+                        <label for="">First Name</label>
+                        <input type="text" name="firstname" value="<%= user.firstname ? user.firstname : '' %>">
+                    </div>
+                    <div class="input-edit">
+                        <label for="">Last Name</label>
+                        <input type="text" name="lastname" value="<%= user.lastname ? user.lastname : '' %>">
+                    </div>
+                    <div class="input-edit">
+                        <label for="">User Name</label>
+                        <input type="text" name="name" value="<%= user.name %>">
+                    </div>
+                    <div class="input-edit">
+                        <label for="">Email</label>
+                        <input type="text" name="email" value="<%= user.email %>">
+                    </div>
+                    <div class="input-edit">
+                        <label for="">Address</label>
+                        <input type="text" name="address" value="<%= user.address ? user.address : '' %>">
+                    </div>
+                    <div class="btn-handle">
+                        <button class="btn-change-profile">Change</button>
+                        <a href="#"><button class="btn-cancel">Cancel</button></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab-profile-pane">
+            <form action="/profile/change/password?_method=PUT" method="POST">
+                <div class="input-edit">
+                    <label for="">Current Password</label>
+                    <input type="password" name="currentpassword">
+                </div>
+                <div class="input-edit">
+                    <label for="">New Password</label>
+                    <input type="password" name="password">
+                </div>
+                <div class="input-edit">
+                    <label for="">Confirm Password</label>
+                    <input type="password" name="confirmpassword">
+                </div>
+                <div class="btn-handle">
+                    <button class="btn-change-profile">Change</button>
+                    <a href="#"><button class="btn-cancel">Cancel</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

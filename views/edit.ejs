@@ -1,0 +1,61 @@
+<div class="admin-edit-container">
+    <div class="admin-edit-wrapper">
+        <div class="admin-edit-center">
+            <form action="/admin/<%= song._id %>?_method=PUT" method="POST" class="form-post-song" enctype="multipart/form-data">
+                <div class="admin-post-input">
+                    <div class="admin-post-title">Post</div>
+                    <label for="name">Song Name</label>
+                    <input type="text" name="name" value="<%= song.name %>">
+                </div>
+                <div class="admin-post-input">
+                    <label for="artist">Artist Name</label>
+                    <input type="text" name="artist" value="<%= song.artist %>">
+                </div>
+                <div class="admin-post-input">
+                    <label for="composer">Composer Name</label>
+                    <input type="text" name="composer" value="<%= song.composer %>">
+                </div>
+                <div class="admin-post-input">
+                    <label for="type">Types</label>
+                    <select name="type" id="type" class="admin-input-select">
+                        <option value="">Choose type song</option>
+                        <option value="classical">Classical</option>
+                        <option value="country">Country</option>
+                        <option value="edm">Electronic dance music (EDM)</option>
+                        <option value="hiphop">Hip-hop</option>
+                        <option value="jazz">Jazz</option>
+                        <option value="kpop">Kpop</option>
+                        <option value="pop">Pop</option>
+                        <option value="rap">Rap</option>
+                        <option value="r&b">Rhythm & blues (R&B)</option>
+                        <option value="rock">Rock</option>
+                    </select>
+                </div>
+                <div class="admin-post-input">
+                    <label>Song Image</label>
+                    <label class="file-post">
+                        <input type="file" name="image">
+                        <span class="custom-file-post"></span>
+                    </label>
+                </div>
+                <div class="admin-post-input">
+                    <label>Song Audio</label>
+                    <label class="file-post">
+                        <input type="file" name="audio">
+                        <span class="custom-file-post"></span>
+                    </label>
+                </div>
+                <div class="admin-post-input">
+                    <label for="lyric">Song Lyric</label>
+                    <textarea name="lyric" id="lyric" cols="30" rows="10"><%= song.lyric %></textarea>
+                    <div class="btn-post-box">
+                        <button class="btn-post">Save</button>
+                        <a href="/admin/store">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

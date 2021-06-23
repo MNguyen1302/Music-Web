@@ -1,15 +1,29 @@
+<% if(locals.user) { %>
 <div class="player">
     <div class="audio-control-bar">
-        <div class="audio-info-bar">
-            <div class="audio-track">
-                <img src="https://i1.sndcdn.com/artworks-000220086310-6z7vf7-t500x500.jpg" alt="">
-            </div>
-            <div class="audio-content">
-                <span>Something Just Like This</span>
-                <br>
-                <span>The Chainsmokers x Coldplay</span>
-            </div>
-        </div>
+        <% if(locals.song) { %> 
+            <div class="audio-info-bar">
+                <div class="audio-track">
+                    <img src="<%= song.image %>" alt="">
+                </div>
+                <div class="audio-content">
+                    <a href="#"><span><%= song.name %></span></a>
+                    <br>
+                    <a href="#"><span><%= song.artist %></span></a>
+                </div>
+            </div>  
+        <% } else { %>
+            <div class="audio-info-bar" style="opacity: 0;">
+                <div class="audio-track">
+                    <img src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" alt="">
+                </div>
+                <div class="audio-content">
+                    <span>Nonononononono</span>
+                    <br>
+                    <span>Nonononononono</span>
+                </div>
+            </div>  
+        <% } %>
         <div class="control-bar">
             <div class="control-bar__controls">
                 <button class="btn btn-random" title="Random"><i class="ri-shuffle-line"></i></button>
@@ -23,7 +37,7 @@
             </div>
             <div class="progress-bar">
                 <div class="progress-bar__current">
-                    <span class="current">0:00</span>
+                    <span class="current-time">00:00</span>
                 </div>
                 <div class="progress-bar__slider">
                     <div class="progress__total">
@@ -31,7 +45,7 @@
                     </div>
                 </div>
                 <div class="progress-bar__duration">
-                    <span class="duration">3:10</span>
+                    <span class="duration-time"></span>
                 </div>
             </div>
         </div>
@@ -49,4 +63,6 @@
             </div>
         </div>
     </div>
-</div>
+</div>    
+<% }; %>
+

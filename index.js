@@ -10,6 +10,8 @@ const mongoose = require('mongoose')
 const homeRoute = require('./routes/home');
 const authRoute = require('./routes/auth');
 const profileRoute = require('./routes/profile');
+const songRoute = require('./routes/song');
+const adminRoute = require('./routes/admin');
 
 const authMiddleware = require('./middlewares/auth.middleware');
 const upload = require('./middlewares/multer.middleware');
@@ -33,7 +35,9 @@ app.set('view engine', 'ejs');
 
 app.use('/', homeRoute);
 app.use('/auth', authRoute);
-app.use('/profile', authMiddleware.requireAuth, upload, profileRoute)
+app.use('/profile', authMiddleware.requireAuth, upload, profileRoute);
+app.use('/song', songRoute);
+app.use('/admin', authMiddleware.requireAuth, upload, adminRoute);
 
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))

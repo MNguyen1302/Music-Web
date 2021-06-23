@@ -2,7 +2,7 @@
     <div class="carousel-wrapper">
         <div class="owl-carousel owl-theme">
             <div class="item">
-                <img src="https://i.pinimg.com/originals/31/24/77/31247762da16489a112dcf83e868cce2.jpg" alt="">
+                <img src="https://images.unsplash.com/photo-1598387846419-a2c870ad3ecd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80" alt="">
                 <div class="item-content">
                     <span>Music is a good way to relax</span>
                 </div>
@@ -23,97 +23,27 @@
                 </div>
                 <div class="tabs-content">
                     <div class="tab-pane active">
+                        <% topsongs.slice(1, 8).forEach(function(topsong, index) { %>
                         <div class="tab-pane-block">
-                            <div class="song-list-number">
-                                <span>1</span>
-                            </div>
-                            <div class="song-list-image">
-                                <img src="https://i1.sndcdn.com/artworks-000542141223-xzig0f-t500x500.jpg" alt="">
-                            </div>
-                            <div class="song-list-info">
-                                <span>Bad Guy</span>
-                                <span>Billie Eilish</span>
+                            <div class="song-list-left">
+                                <div class="song-list-number">
+                                    <span><%= index + 1 %></span>
+                                </div>
+                                <div class="song-list-image">
+                                    <img src="<%= topsong.image %>" alt="">
+                                </div>
+                                <div class="song-list-info">
+                                    <a href="/song/<%= topsong.slug %>"><span><%= topsong.name %></span></a>
+                                    <a href="#"><span><%= topsong.artist %></span></a>
+                                </div>
                             </div>
                             <div class="song-list-icon">
-                                <i class="ri-more-2-line"></i>
+                                <span style="color: #73d99f; padding: 0 10px;"><i class="fas fa-heart"></i></span>
+                                <span><i class="ri-more-2-line"></i></span>
                             </div>
-                        </div>
-                        <div class="tab-pane-block">
-                            <div class="song-list-number">
-                                <span>1</span>
-                            </div>
-                            <div class="song-list-image">
-                                <img src="https://i1.sndcdn.com/artworks-000542141223-xzig0f-t500x500.jpg" alt="">
-                            </div>
-                            <div class="song-list-info">
-                                <span>Bad Guy</span>
-                                <span>Billie Eilish</span>
-                            </div>
-                            <div class="song-list-icon">
-                                <i class="ri-more-2-line"></i>
-                            </div>
-                        </div>
-                        <div class="tab-pane-block">
-                            <div class="song-list-number">
-                                <span>1</span>
-                            </div>
-                            <div class="song-list-image">
-                                <img src="https://i1.sndcdn.com/artworks-000542141223-xzig0f-t500x500.jpg" alt="">
-                            </div>
-                            <div class="song-list-info">
-                                <span>Bad Guy</span>
-                                <span>Billie Eilish</span>
-                            </div>
-                            <div class="song-list-icon">
-                                <i class="ri-more-2-line"></i>
-                            </div>
-                        </div>
-                        <div class="tab-pane-block">
-                            <div class="song-list-number">
-                                <span>1</span>
-                            </div>
-                            <div class="song-list-image">
-                                <img src="https://i1.sndcdn.com/artworks-000542141223-xzig0f-t500x500.jpg" alt="">
-                            </div>
-                            <div class="song-list-info">
-                                <span>Bad Guy</span>
-                                <span>Billie Eilish</span>
-                            </div>
-                            <div class="song-list-icon">
-                                <i class="ri-more-2-line"></i>
-                            </div>
-                        </div>
-                        <div class="tab-pane-block">
-                            <div class="song-list-number">
-                                <span>1</span>
-                            </div>
-                            <div class="song-list-image">
-                                <img src="https://i1.sndcdn.com/artworks-000542141223-xzig0f-t500x500.jpg" alt="">
-                            </div>
-                            <div class="song-list-info">
-                                <span>Bad Guy</span>
-                                <span>Billie Eilish</span>
-                            </div>
-                            <div class="song-list-icon">
-                                <i class="ri-more-2-line"></i>
-                            </div>
-                        </div>
-                        <div class="tab-pane-block">
-                            <div class="song-list-number">
-                                <span>1</span>
-                            </div>
-                            <div class="song-list-image">
-                                <img src="https://i1.sndcdn.com/artworks-000542141223-xzig0f-t500x500.jpg" alt="">
-                            </div>
-                            <div class="song-list-info">
-                                <span>Bad Guy</span>
-                                <span>Billie Eilish</span>
-                            </div>
-                            <div class="song-list-icon">
-                                <i class="ri-more-2-line"></i>
-                            </div>
-                        </div>
-                    </div>
+                        </div>    
+                        <% }); %>
+                        
                     <div class="tab-pane">
                         <div class="tab-pane-block">
                             <div class="song-list-number">
@@ -221,103 +151,30 @@
             <h2>Top Song</h2>
         </div>
         <div class="viewmore">
-            <a href="#">
+            <a href="/song">
                 <h3>View More</h3>
                 <i class="ri-arrow-right-s-line"></i>
             </a>
         </div>
     </div>
     <div class="topsong-wrapper">
+        <% songs.slice(0,6).forEach(function(song) { %>
         <div class="topsong-box">
-            <a href="#">
+            <a href="/song/<%= song.slug %>">
                 <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
+                    <img src="<%= song.image %>" alt="">
                     <div class="btn-play">
                         <i class="ri-play-circle-line"></i>  
                     </div>
                 </div>
             </a>
             <div class="song-info">
-                <span>One Call Away</span>
+                <span><%= song.name %></span>
                 <br>
-                <span>Charlie Puth</span>
+                <p><%= song.artist %></p>
             </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
+        </div>  
+        <% }); %>
     </div>
 </div>
 
@@ -333,10 +190,44 @@
             </a>
         </div>
     </div>
+    <div class="newrelease-wrapper">
+        <% songs.slice(songs.length - 6).forEach(function(song) { %>
+            <div class="topsong-box">
+                <a href="/song/<%= song.slug %>">
+                    <div class="song-image">
+                        <img src="<%= song.image %>" alt="">
+                        <div class="btn-play">
+                            <i class="ri-play-circle-line"></i>  
+                        </div>
+                    </div>
+                </a>
+                <div class="song-info">
+                    <span><%= song.name %></span>
+                    <br>
+                    <p><%= song.artist %></p>
+                </div>
+            </div>  
+            <% }); %>
+    </div>
+</div>
+
+<div class="topsong-container">
+    <div class="topsong-title">
+        <div class="title">
+            <h2>Artist</h2>
+        </div>
+        <div class="viewmore">
+            <a href="#">
+                <h3>View More</h3>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+        </div>
+    </div>
     <div class="topsong-wrapper">
+        <!-- <% songs.forEach(function(song) { %> -->
         <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
+            <a href="/song/<%= song.slug %>">
+                <div class="artist-image">
                     <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
                     <div class="btn-play">
                         <i class="ri-play-circle-line"></i>  
@@ -346,83 +237,9 @@
             <div class="song-info">
                 <span>One Call Away</span>
                 <br>
-                <span>Charlie Puth</span>
+                <p>Charlie Puth</p>
             </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
-        <div class="topsong-box">
-            <a href="#">
-                <div class="song-image">
-                    <img src="https://i1.sndcdn.com/artworks-gPFtuwL4Zfu0-0-t500x500.jpg" alt="">
-                    <div class="btn-play">
-                        <i class="ri-play-circle-line"></i>  
-                    </div>
-                </div>
-            </a>
-            <div class="song-info">
-                <span>One Call Away</span>
-                <br>
-                <span>Charlie Puth</span>
-            </div>
-        </div>
+        </div>  
+        <!-- <% }); %> -->
     </div>
 </div>

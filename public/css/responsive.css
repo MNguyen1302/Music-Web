@@ -1,0 +1,87 @@
+@media screen and (max-width: 1300px) {
+    /* Sidebar */
+    .sidebar {
+        transition: all 0.4s ease-in-out;
+        width: 0;
+    }
+    .sidebar-header,
+    .sidebar-item,
+    .sidebar-logo {
+        display: none;
+    }
+
+    .navbar,
+    .content-page {
+        margin-left: 0;
+        transition: all 0.4s ease-in-out;
+    }
+    /* Navbar */
+    .search-box {
+        padding: 15px 0;
+    }
+    .toggle-bar-responsive {
+        display: block;
+    }
+    .sidebar.open {
+        transition: all 0.4s ease-in-out;
+        width: 17.5rem;
+        z-index: 999;
+    }
+    .sidebar.open .sidebar-header,
+    .sidebar.open .sidebar-item ,
+    .sidebar.open .sidebar-logo {
+        display: flex;
+    }
+    /*  */
+    .carousel-wrapper {
+        flex-wrap: wrap;
+    }
+    .tab-container {
+        width: 98.1%;
+    }
+    .tabs-title {
+        justify-content: space-around;
+    }
+    .player {
+        width: 100%;
+    }
+    .audio-info-bar {
+        display: none;
+    }
+    .audio-control-bar {
+        flex-wrap: wrap;
+    }
+
+    /* Post */
+    .admin-post-input input, 
+    .admin-post-input label,
+    .admin-post-title,
+    .admin-input-select,
+    #lyric {
+        width: 80%;
+    }
+    .admin-post-wrapper {
+        padding: 15px;
+    }
+    .admin-post-center {
+        margin: 30px 60px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .tab-profile-item {
+        padding: 10px 30px;
+        flex-grow: 1;
+
+    }
+    .topsong-wrapper {
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 900px) {
+    .input-edit input {
+        width: 95%;
+    }
+    .search-box {
+        flex-grow: 2;
+    }
+}

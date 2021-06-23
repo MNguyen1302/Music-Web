@@ -1,0 +1,149 @@
+<div class="song-detail-container">
+    <div class="song-detail-wrapper">
+        <div class="song-detail-header">
+            <img src="<%= song.image %>" class="song-detail-background" alt="">
+            <div class="song-detail">
+                <div class="song-detail-image">
+                    <img src="<%= song.image %>" alt="">
+                </div>
+                <div class="song-detail-main">
+                    <div class="song-detail-info">
+                        <span><%= song.name %></span>
+                        <br>
+                        <span><%= song.artist %></span>
+                    </div>
+                    <div class="song-detail-icon-box">
+                        <audio id="audio" src="<%= song.audio %>"></audio>
+                        <div class="song-detail-icon">
+                            <button class="btn btn-toggle-play">
+                                <i class="ri-play-circle-fill icon-play"></i>
+                                <i class="ri-pause-circle-fill icon-pause"></i>
+                            </button>
+                        </div>
+                        <div class="song-detail-extra">
+                            <a href="<%= song.audio %>" download="<%= song.name %> - <%= song.artist %>">
+                                <i class="fas fa-download"></i>
+                            </a>
+                            <a class="btn-like" id="btn-like">
+                                <span id="numbers-like"><%= song.likeCount %></span>
+                                <i class="far fa-heart icon-unlike"></i>
+                                <i class="fas fa-heart icon-like"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="song-detail-lyric">
+            <div class="song-detail-lyric-wrapper">
+                <div class="song-detail-lyric-title">Lyric <%= song.name %></div>
+                <div class="lyric"><%= song.lyric %></div>
+            </div>
+        </div>
+        <div class="song-detail-extra-container">
+            <div class="song-detail-extra-wrapper">
+                <div class="song-detail-comment-container">
+                    <div class="song-detail-comment-title"><%= comments.length %> <%= comments.length > 1 ? "Comments" : "Comment"%></div>
+                    <div class="form-comment">
+                        <form action="/song/<%= song.slug %>" method="POST">
+                            <textarea name="content" cols="30" rows="10" placeholder="Comment here"></textarea>
+                            <div class="btn-send-comment">
+                                <button id="btn-send-comment">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="song-detail-comment">
+                        <% if(comments.length) { %> 
+                            <% comments.forEach(function(comment) { %>
+                            <hr>
+                            <div class="song-detail-comment-box">
+                                <div class="song-comment-avatar">
+                                    <% if(user.avatar) { %> 
+                                    <img src="<%= comment.userId.avatar %>" alt="">
+                                    <% } else { %>
+                                    <img src="/images/noavatar.svg" alt="">
+                                    <% } %>
+                                </div>
+                                <div class="song-comment-main">
+                                    <div class="song-comment-header">
+                                        <div class="song-comment-username">
+                                            <span><%= comment.userId.name %></span>
+                                        </div>
+                                        <div class="song-comment-header-right">
+                                            <div class="song-comment-time">
+                                                <span><%= moment(comment.date).fromNow() %></span>
+                                            </div>
+                                            <div class="song-comment-icon">
+                                                <i class="ri-heart-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="song-comment-content">
+                                        <span><%= comment.content %></span>
+                                    </div>
+                                </div>
+                            </div>    
+                            <% }); %>
+                        <% } else { %>
+                                <div class="song-detail-comment-status">
+                                    <span>Don't have any comments for this song</span>
+                                </div>
+                        <% } %>
+                        
+                    </div>
+                </div>
+
+                <div class="song-detail-recommend">
+                    <div class="song-detail-recommend-title">
+                        Recommend
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const likeBtn = document.getElementById('btn-like');
+
+    let likeCount = <%- song.likeCount %>;
+    let isLiked = false;
+    let userlikes = <%- userlikes %>;
+    let user = <%- account %>;
+
+    checkLike();
+
+    if (isLiked) likeBtn.classList.add('like')
+
+    likeBtn.onclick = function() {
+        if (!user) return;
+        
+        isLiked = !isLiked;
+        if (isLiked) {
+            userlikes.push(user.name);
+            likeCount = ++likeCount;
+        } else {
+            const index = userlikes.indexOf(user.name);
+            userlikes.splice(index, 1);
+            likeCount = --likeCount;
+        }
+        likeBtn.classList.toggle('like');
+        document.getElementById("numbers-like").innerHTML = likeCount;
+        $.ajax(`${window.location.href}/like`, {
+            type: "POST",
+            data: {
+                "userlikes": userlikes,
+                "likeCount": likeCount
+            },
+            success: function(res) {
+                console.log(res);
+            }
+        });
+    }
+
+    function checkLike() {
+        if (!user) return;
+        if (!userlikes) userlikes = [];
+        isLiked = userlikes.includes(user.name) ? true : false;
+    }
+</script>

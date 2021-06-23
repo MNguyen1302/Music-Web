@@ -12,19 +12,42 @@
     </div>
     <div class="tabs-profile-content">
         <div class="tab-profile-pane active">
-            Halo
-        </div>
-        <div class="tab-profile-pane">
-            <form action="/profile/update?_method=PUT" method="POST" class="form-edit" enctype="multipart/form-data">
-                <div class="form-edit-avatar">
+            <div class="profile-user">
+                <div class="profile-user-avatar">
                     <% if(user.avatar) { %> 
                     <img src="<%= user.avatar %>" alt="">
                     <% } else { %>
                     <img src="/images/noavatar.svg" alt="">
                     <% } %>
+                </div>
+                <div class="profile-user-info">
+                    <div class="profile-input">
+                        <span class="profile-label">User Name</span>
+                        <span class="profile-content"><%= user.name %></span>
+                    </div>
+                    <div class="profile-input">
+                        <span class="profile-label">Contact</span>
+                        <span class="profile-content"><%= user.email %></span>
+                    </div>
+                    <div class="profile-input">
+                        <span class="profile-label">Address</span>
+                        <span class="profile-content"><%= user.address %></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-profile-pane">
+            <form action="/profile/update?_method=PUT" method="POST" class="form-edit" enctype="multipart/form-data">
+                <div class="form-edit-avatar">
+                    <!-- <img alt="" id="uploadPreview"> -->
+                    <% if(user.avatar) { %> 
+                    <img src="<%= user.avatar %>" alt="" id="image-preview">
+                    <% } else { %>
+                    <img src="/images/noavatar.svg" alt="" id="image-preview">
+                    <% } %>
                     <div class="image-edit">
                         <i class="ri-image-edit-line"></i>
-                        <input name="avatar" type="file" class="file-upload">
+                        <input id="file-upload" name="avatar" type="file" class="file-upload" >
                     </div>
                 </div>
                 <div class="form-edit-information">
@@ -77,3 +100,20 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    const fileUpload = document.getElementById('file-upload');
+    const imagePreview = document.getElementById('image-preview');
+    function previewImage(e) {
+        let fileReader = new FileReader();
+
+        fileReader.onload = function() {
+            imagePreview.src = fileReader.result;
+        }
+        fileReader.readAsDataURL(e.target.files[0])
+    }
+
+    fileUpload.onchange = function(e) {
+        previewImage(e);
+    }
+</script>

@@ -44,6 +44,7 @@ class AuthController {
     }
 
     async postRegister(req, res) {
+        console.log(req.body);
         let errors = [];
 
         const name = req.body.name;

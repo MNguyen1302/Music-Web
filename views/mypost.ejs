@@ -1,0 +1,74 @@
+<div class="mypost-container">
+    <div class="mypost-wrapper">
+        <div class="mypost-center" style="overflow-x: auto;">
+            <div class="mypost-title-box">
+                <div class="mypost-title">
+                    Song Lists
+                </div>
+                <div class="mypost-add">
+                    <a href="/admin/post">Add new song</a>
+                </div>
+            </div>
+            <table class="table-mypost">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Song Cover Image</th>
+                        <th>Song Name</th>
+                        <th>Artist Name</th>
+                        <th>Song Category</th>
+                        <th>Composer</th>
+                        <th>Time</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(songs.length) { %> 
+                        <% songs.forEach(function(song, index) { %>
+                            <tr>
+                                <td class="td-index"><%= index+1 %></td>
+                                <td class="td-image">
+                                    <img src="<%= song.image %>" alt="">
+                                </td>
+                                <td><%= song.name %></td>
+                                <td><%= song.artist %></td>
+                                <td><%= song.type %></td>
+                                <td><%= song.composer %></td>
+                                <td><%= moment(song.createdAt).format('lll') %></td>
+                                <td class="td-action">
+                                    <a href="/admin/edit/<%= song._id %>" style="color: lightgreen;">
+                                        <i class="ri-edit-box-line"></i>
+                                    </a>
+                                </td>
+                                <td class="td-action">
+                                    <form method="POST" name="delete-form"></form>
+                                    <button class="btn-delete" data-index="<%=index%>">
+                                        <i class="ri-delete-bin-6-line"></i>
+                                    </button>
+                                    <div class="popup-delete-post" data-index="<%=index%>">
+                                        <div class="delete-popup-content">
+                                            Do you want to delete this song?
+                                        </div>
+                                        <div class="btn-choose">
+                                            <button class="btn-yes" data-id="<%=song._id%>">Yes</button>
+                                            <button class="btn-no" data-index="<%=index%>">No</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }); %>    
+                    <% } else { %>
+                        <tr>
+                            <td colspan="9" style="text-align: center;">You have no posts yet</td>
+                        </tr>    
+                    <% } %>
+                
+                </tbody>
+            </table>
+    
+        </div>
+    </div>
+</div>
+
+<script src="/js/edit.js"></script>

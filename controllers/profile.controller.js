@@ -1,11 +1,8 @@
-require('../middlewares/cloudinary.middleware')
 const User = require('../models/user.model');
 
 const bcrypt = require('bcryptjs');
 
-const fs = require('fs');
-const cloudinary = require('cloudinary').v2;
-const { errorMonitor } = require('events');
+const cloudinary = require('../middlewares/cloudinary.middleware');
 
 async function checkUser(req, res) {
     const id = req.signedCookies.userId;
@@ -27,16 +24,7 @@ class ProfileController {
 
         if(req.files['avatar']) {
             let avatarPromises = req.files['avatar'].map(file => new Promise((resolve, reject) => {
-                cloudinary.uploader.upload(file.path, { folder: 'avatar', user_filename: true, unique_filename: false, resource_type: 'image'}, (err, result) => {
-                    if(err) resolve(err);
-                    else {
-                        fs.unlinkSync(file.path);
-                        resolve({
-                            url: result.url,
-                            public_id: result.public_id
-                        })
-                    }
-                })
+                cloudinary.upload(file, 'avatar', 'image', resolve);
             }))
 
             const avatar = await Promise.all(avatarPromises);
@@ -53,7 +41,7 @@ class ProfileController {
 
     async changePassword(req, res) {
         let errors = [];
-        
+
         const user = await checkUser(req, res);
 
         const salt = await bcrypt.genSalt();

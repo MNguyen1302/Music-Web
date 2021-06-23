@@ -8,4 +8,6 @@ router.get('/', controller.index);
 
 router.get('/home', controller.logout);
 
+router.get('/category', controller.category);
+
 module.exports = router;

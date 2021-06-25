@@ -18,6 +18,7 @@ class HomeController {
                 songs: songs,
                 topsongs: topsongs
             })
+            return;
         }
         res.render('index', {
             title: 'Home',
@@ -28,8 +29,8 @@ class HomeController {
     }
 
     async logout(req, res) {
-        res.clearCookie('userId')
-        res.redirect('/');
+        res.clearCookie('userId');
+        res.redirect('back');
     }
 
     async category(req, res) {
@@ -37,6 +38,18 @@ class HomeController {
         res.render('category', {
             title: 'Category',
             user: user
+        })
+    }
+
+    async categoryShow(req, res) {
+        const user = await checkUser(req, res);
+        const type = req.params.type;
+        const songs = await Song.find({type: type});
+        res.render('category-show', {
+            title: `${type[0].toUpperCase() + type.slice(1) }`,
+            songs: songs,
+            type: type,
+            user: user,
         })
     }
 }

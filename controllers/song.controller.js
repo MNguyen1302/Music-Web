@@ -52,12 +52,14 @@ class SongController {
         })
         comment.save()
             .then(() => res.redirect('back'))
-            .catch(error => console.log(error))
+            .catch(error => {
+                return res.status(400).send(error)
+            })
     }
 
     async likeSong(req, res) {
         Song.updateOne({ slug: req.params.slug }, {userLikes: req.body.userlikes, likeCount: req.body.likeCount})
-        .then(() => res.send('Liked post'));
+        .then(() => { return res.send('Liked post')});
     }
 
 }

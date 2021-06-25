@@ -4,23 +4,25 @@
         <% if(locals.song) { %> 
             <div class="audio-info-bar">
                 <div class="audio-track">
-                    <img src="<%= song.image %>" alt="">
+                    <img src="<%= song.image %>" alt="" id="song-image">
                 </div>
                 <div class="audio-content">
-                    <a href="#"><span><%= song.name %></span></a>
+                    <a href="#"><span id="song-name"><%= song.name %></span></a>
                     <br>
-                    <a href="#"><span><%= song.artist %></span></a>
+                    <a href="#"><span id="song-artist"><%= song.artist %></span></a>
+                    <audio id="song-audio" src="<%= song.audio %>"></audio>
                 </div>
             </div>  
         <% } else { %>
-            <div class="audio-info-bar" style="opacity: 0;">
+            <div class="audio-info-bar">
                 <div class="audio-track">
-                    <img src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" alt="">
+                    <img src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" alt="" id="song-image2">
                 </div>
                 <div class="audio-content">
-                    <span>Nonononononono</span>
+                    <a href="#"><span id="song-name2"></span></a>
                     <br>
-                    <span>Nonononononono</span>
+                    <a href="#"><span id="song-artist2"></span></a>
+                    <audio id="song-audio" src=""></audio>
                 </div>
             </div>  
         <% } %>
@@ -66,3 +68,6 @@
 </div>    
 <% }; %>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="/js/audio.js"></script>

@@ -2,7 +2,7 @@ const User = require('../models/user.model');
 
 const bcrypt = require('bcryptjs');
 
-const cloudinary = require('../middlewares/cloudinary.middleware');
+const cloudinary = require('../services/cloudinary');
 
 async function checkUser(req, res) {
     const id = req.signedCookies.userId;
@@ -34,8 +34,7 @@ class ProfileController {
         User.updateOne({_id: id}, req.body)
             .then(() => res.redirect('back'))
             .catch(error => {
-                console.log(error);
-                res.render('error/404error', {layout: './error/404error'});
+                return res.status(400).send(error);
             })
     }
 
@@ -70,8 +69,7 @@ class ProfileController {
         User.updateOne({_id: user._id}, {password: req.body.password})
             .then(() => res.redirect('back'))
             .catch(error => {
-                console.log(error);
-                res.render('error/404error', {layout: './error/404error'});
+                return res.status(400).send(error);
             })
     }
 

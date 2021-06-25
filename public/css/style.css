@@ -313,7 +313,7 @@ html, body {
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
+    justify-content: normal;
     background: var(--white);
     box-shadow: 0px 4px 20px 0px rgb(44 101 144 / 10%);
     border-radius: 0 0 10px 10px;
@@ -374,8 +374,8 @@ html, body {
 .artist-image {
     position: relative;
     width: 200px;
-    border-radius: 50%;
     height: 200px;
+    border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
 }
@@ -557,9 +557,11 @@ html, body {
 .carousel-wrapper {
     padding: 30px 30px 0 30px;
     display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: row;
-    justify-content: space-between ;
+    justify-content: space-between;
+}
+.owl-carousel {
+    width: 90%;
 }
 .item {
     position: relative;
@@ -589,7 +591,7 @@ html, body {
 }
 .tab-container {
     height: 100%;
-    width: 30%;
+    width: 40%;
 }
 .tab-wrapper {
     display: flex;
@@ -664,11 +666,13 @@ html, body {
 }
 .song-list-info a {
     font-family: 'Poppins', sans-serif;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
     color: var(--light-dark);
 }
 .song-list-info a:last-child {
+    color: rgba(0 0 0 /30%);
     font-size: 0.9em;
 }
 .song-list-icon {
@@ -676,7 +680,11 @@ html, body {
     cursor: pointer;
     padding: 0 20px;
 }
-
+.song-list-likecount {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important;
+    font-weight: lighter;
+    color: var(--light-dark);
+}
 /* Profile */
 .tabs-profile {
     display: flex;
@@ -827,114 +835,6 @@ html, body {
 .tab-profile-pane.active {
     display: flex;
 }
-/* Sign In-Out */
-.signinup-wrapper {
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-.image-container {
-    text-align: center;
-}
-.image-container img {
-    width: 800px;
-    height: 600px;
-}
-.form-container {
-    padding: 0 50px;
-}
-.form-wrapper,
-.form-signup-wrapper {
-    padding: 100px 30px;
-    border-radius: 5px;
-    border: solid 1px rgba(0 0 0 /5%);
-    box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
-}
-.form-signup-wrapper {
-    padding: 60px 30px;
-}
-.form-title {
-    text-align: center;
-    font-size: 1.6em;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    color: var(--light-green);
-}
-.signinup-input {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 10px 0;
-}
-.signinup-input label {
-    margin: 5px 0;
-    font-size: 1em;
-    font-family: 'Poppins', sans-serif;
-    color: var(--light-green);
-    font-weight: 600;
-}
-.signinup-input input {
-    padding: 12px 10px;
-    border: solid 1px rgba(0 0 0 /20%);
-    border-radius: 5px;
-    outline: none;
-    font-size: 1em;
-    font-family: 'Poppins', sans-serif;
-    color: rgba(0 0 0 /50%);
-    width: 450px;
-    box-shadow: 0 5px 10px rgb(0 0 0 / 5%);
-    transition: all 0.3s ease;
-}
-.signinup-input input:focus {
-    border: solid 2px var(--light-green);
-    transition: all 0.3s ease;
-}
-.btn-signin-form {
-    padding: 20px 0;
-}
-.btn-signin-form button{
-    width: 100%;
-    height: 40px;
-    font-size: 1.2em;
-    font-family: 'Poppins', sans-serif;
-    background: var(--light-green);
-    color: var(--white);
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
-    cursor: pointer;
-    font-weight: bold;
-    outline: none;
-}
-.signinup-status {
-    padding: 5px;
-    text-align: center;
-    font-size: 1em;
-    color: var(--light-gray);
-    font-family: 'Poppins', sans-serif;
-}
-.signinup-status a {
-    font-family: 'Poppins', sans-serif;
-    text-decoration: none;
-    color: var(--light-green);
-}
-.ri-google-fill {
-    font-size: 2em;
-    background: 
-    linear-gradient(to bottom left,transparent 49%,#fbbc05 50%) 0 25%/48% 40%,
-    linear-gradient(to top    left,transparent 49%,#fbbc05 50%) 0 75%/48% 40%,
-  
-    linear-gradient(-40deg ,transparent 53%,#ea4335 54%),
-    linear-gradient( 45deg ,transparent 46%,#4285f4 48%),
-    #34a853;
-    background-repeat:no-repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-}
 /* Error Page */
 .error-container {
     height: 100vh;
@@ -1058,7 +958,6 @@ html, body {
 .song-detail-icon-box {
     display: flex;
     align-items: center;
-    justify-content: end;
     margin: 10px 0;
 }
 .song-detail-extra a {
@@ -1113,9 +1012,9 @@ html, body {
 }
 .song-detail-comment-title {
     padding: 10px 30px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important;
     font-size: 1.5em;
-    font-weight: 600;
+    font-weight: lighter;
     color: var(--light-gray);
     border-bottom: solid 1px #dee2e6;
 }

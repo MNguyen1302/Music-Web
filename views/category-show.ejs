@@ -1,0 +1,46 @@
+<head>
+    <title><%- title %></title>
+</head>
+
+<div class="allsong-container">
+    <div class="allsong-wrapper">
+        <div class="topsong-container">
+            <div class="topsong-title">
+                <div class="title" style="text-transform: capitalize;">
+                    <h2><%= type %></h2>
+                </div>
+                <div class="sort-song-box">
+                    <div class="sort-song-btn">
+                        <h3>Sort</h3>
+                        <i class="ri-sort-asc"></i>
+                    </div>
+                    <div class="sort-song-dropdown">
+                        <span class="sort-a-z">A-Z</span>
+                        <span class="sort-z-a">Z-A</span>
+                    </div>
+                </div>
+            </div>
+            <div class="topsong-wrapper">
+                <% songs.forEach(function(song) { %>
+                <div class="topsong-box" data-song="<%= song.name %>">
+                    <a href="/song/<%= song.slug %>">
+                        <div class="song-image">
+                            <img src="<%= song.image %>" alt="">
+                            <div class="btn-play">
+                                <i class="ri-play-circle-line"></i>  
+                            </div>
+                        </div>
+                    </a>
+                    <div class="song-info">
+                        <span><%= song.name %></span>
+                        <br>
+                        <p><%= song.artist %></p>
+                    </div>
+                </div>  
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/sort.js"></script>

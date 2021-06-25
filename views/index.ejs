@@ -23,7 +23,7 @@
                 </div>
                 <div class="tabs-content">
                     <div class="tab-pane active">
-                        <% topsongs.slice(1, 8).forEach(function(topsong, index) { %>
+                        <% topsongs.slice(0, 7).forEach(function(topsong, index) { %>
                         <div class="tab-pane-block">
                             <div class="song-list-left">
                                 <div class="song-list-number">
@@ -38,6 +38,7 @@
                                 </div>
                             </div>
                             <div class="song-list-icon">
+                                <span class="song-list-likecount"><%= topsong.likeCount %></span>
                                 <span style="color: #73d99f; padding: 0 10px;"><i class="fas fa-heart"></i></span>
                                 <span><i class="ri-more-2-line"></i></span>
                             </div>
@@ -158,20 +159,20 @@
         </div>
     </div>
     <div class="topsong-wrapper">
-        <% songs.slice(0,6).forEach(function(song) { %>
+        <% topsongs.slice(0,6).forEach(function(topsong) { %>
         <div class="topsong-box">
-            <a href="/song/<%= song.slug %>">
+            <a href="/song/<%= topsong.slug %>">
                 <div class="song-image">
-                    <img src="<%= song.image %>" alt="">
+                    <img src="<%= topsong.image %>" alt="">
                     <div class="btn-play">
                         <i class="ri-play-circle-line"></i>  
                     </div>
                 </div>
             </a>
             <div class="song-info">
-                <span><%= song.name %></span>
+                <span><%= topsong.name %></span>
                 <br>
-                <p><%= song.artist %></p>
+                <p><%= topsong.artist %></p>
             </div>
         </div>  
         <% }); %>

@@ -1,15 +1,12 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
-const sortDropdown = $('.sort-song-dropdown');
-const sortBtn = $('.sort-song-btn');
-const sortAZ = $('.sort-a-z');
-const sortZA = $('.sort-z-a');
+const sortDropdown = document.querySelector('.sort-song-dropdown');
+const sortBtn = document.querySelector('.sort-song-btn');
+const sortAZ = document.querySelector('.sort-a-z');
+const sortZA = document.querySelector('.sort-z-a');
 
 sortBtn.onclick = function() {
     sortDropdown.classList.toggle('show');
 }
-document.onclick = function(e) {
+window.onclick = function(e) {
     if(!sortBtn.contains(e.target)) {
         if(sortDropdown.classList.contains('show')) {
             sortDropdown.classList.toggle('show');
@@ -17,7 +14,7 @@ document.onclick = function(e) {
     }
 }
 
-const container = $('div.topsong-wrapper');
+const container = document.querySelector('.topsong-wrapper');
 const songBoxs = Array.from(document.querySelectorAll('.topsong-box'));
 
 sortAZ.onclick = function() {

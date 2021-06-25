@@ -1,11 +1,14 @@
 require('dotenv').config();
+require('./services/passport');
 
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const session = require('express-session');
+const passport = require('passport');
 
 const homeRoute = require('./routes/home');
 const authRoute = require('./routes/auth');
@@ -16,9 +19,15 @@ const adminRoute = require('./routes/admin');
 const authMiddleware = require('./middlewares/auth.middleware');
 const upload = require('./middlewares/multer.middleware');
 
-const PORT = process.env.PORT || 8080;
-
 const app = express();
+
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  secret: 'secret'
+})) 
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -38,6 +47,8 @@ app.use('/auth', authRoute);
 app.use('/profile', authMiddleware.requireAuth, upload, profileRoute);
 app.use('/song', songRoute);
 app.use('/admin', authMiddleware.requireAuth, upload, adminRoute);
+
+const PORT = process.env.PORT || 8080;
 
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))

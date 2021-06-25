@@ -10,4 +10,6 @@ router.get('/home', controller.logout);
 
 router.get('/category', controller.category);
 
+router.get('/category/:type', controller.categoryShow);
+
 module.exports = router;

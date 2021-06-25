@@ -14,6 +14,13 @@ class AuthController {
         })
     }
 
+    async googleOAuth(req, res) {
+        console.log(req.user);
+        res.cookie('userId', req.user._id, {
+            signed: true
+        })
+    }
+
     async postLogin(req, res) {
         let errors = [];
 
@@ -25,7 +32,7 @@ class AuthController {
                 res.cookie('userId', user._id, {
                     signed: true
                 })
-                res.redirect('/')
+                return res.redirect('/');
             } else {
                 errors.push('Wrong')
             }
@@ -37,7 +44,7 @@ class AuthController {
             res.render('auth/signin', {
                 layout: './auth/signin',
                 error: ['Wrong email or password'],
-                value: req.body
+                values: req.body
             })
             return;
         }
@@ -69,7 +76,7 @@ class AuthController {
             res.render('auth/signup', {
                 layout: './auth/signup',
                 errors: errors,
-                value: req.body
+                values: req.body
             })
             return;
         }
@@ -83,7 +90,7 @@ class AuthController {
             password: req.body.password
         })
         user.save()
-            .then(() => res.redirect('/auth/login'))
+            .then(() => {return res.redirect('/auth/login')})
     }
 }
 module.exports = new AuthController();

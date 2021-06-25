@@ -2,7 +2,7 @@ const User = require('../models/user.model');
 const Song = require('../models/song.model');
 
 const moment = require('moment');
-const cloudinary = require('../middlewares/cloudinary.middleware');
+const cloudinary = require('../services/cloudinary');
 
 async function checkUser(req, res) {
     const id = req.signedCookies.userId;

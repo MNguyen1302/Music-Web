@@ -87,3 +87,84 @@
         flex-grow: 2;
     }
 }
+@media screen and (max-width: 670px) {
+    .song-detail-header,
+    .song-detail-background {
+        height: 600px;
+    }
+
+    .song-detail-header::before {
+        height: 600px;
+    }
+    .song-detail {
+        display: block;
+        left: 105px;
+    }
+    .song-detail-main {
+        padding: 10px 0;
+    }
+    .song-detail-image {
+        text-align: center;
+    }
+    .song-detail-lyric,
+    .song-detail-extra-wrapper {
+        margin: 30px 40px;
+    }
+    .song-detail-extra-wrapper {
+        flex-wrap: wrap;
+    }
+    .song-detail-icon-box {
+        justify-content: space-between;
+    }
+    .btn-signin {
+        display: flex;
+        width: 220px;
+        padding: 0 10px;
+    }
+    .signin-link {
+        line-height: 50px;
+    }
+    .newrelease-wrapper {
+        justify-content: center;
+    }
+    .tab-pane-block {
+        font-size: 0.7em;
+    }
+    .notifications-container, .change-theme-container {
+        margin: 0 3px;
+    }
+
+    /* Category */
+    .category-wrapper {
+        justify-content: center!important;
+    }
+    .category-image {
+        width: 100%;
+    }
+    .category-text-box {
+        padding: 30px 60px;
+    }
+
+    /* Login */
+    .signinup-container {
+        width: 100%;
+        justify-content: center;
+    }
+    .signinup-wrapper {
+        display: block;
+        overflow: hidden;
+    }
+    .image-container {
+        display: none;
+    }
+    .signinup-input input {
+        width: auto;
+    }
+    .form-container {
+        padding: 0 10px;
+        margin: 50px 0;
+    }
+    .form-wrapper {
+        padding: 100px 15px;
+    }
+}

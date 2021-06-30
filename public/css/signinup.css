@@ -8,9 +8,6 @@
     --light-info: #fbfcff;
     --light-gray: #4a525f;
 }
-body {
-    overflow: hidden;
-}
 .signinup-wrapper {
     height: 100vh;
     display: flex;
@@ -20,10 +17,12 @@ body {
 }
 .image-container {
     text-align: center;
-}
-.image-container img {
     width: 800px;
     height: 600px;
+}
+.image-container img {
+    width: 100%;
+    height: 100%;
     pointer-events: none;
 }
 .form-container {

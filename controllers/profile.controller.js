@@ -34,7 +34,7 @@ class ProfileController {
         User.updateOne({_id: id}, req.body)
             .then(() => res.redirect('back'))
             .catch(error => {
-                return res.status(400).send(error);
+                return res.status(400).redirect('/error/notfound');
             })
     }
 
@@ -69,7 +69,8 @@ class ProfileController {
         User.updateOne({_id: user._id}, {password: req.body.password})
             .then(() => res.redirect('back'))
             .catch(error => {
-                return res.status(400).send(error);
+                console.log(error);
+                return res.status(400).redirect('/error/notfound');
             })
     }
 

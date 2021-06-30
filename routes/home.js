@@ -8,6 +8,8 @@ router.get('/', controller.index);
 
 router.get('/home', controller.logout);
 
+router.get('/error/notfound', controller.error);
+
 router.get('/category', controller.category);
 
 router.get('/category/:type', controller.categoryShow);

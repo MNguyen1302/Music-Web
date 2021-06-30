@@ -29,6 +29,9 @@ html, body {
     transition: all 0.4s ease-in-out;
     background: var(--white);
 }
+.sidebar-side {
+    list-style: none;
+}
 .sidebar img {
     height: 50px;
     width: 50px;

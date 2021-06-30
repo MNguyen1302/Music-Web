@@ -33,6 +33,12 @@ class HomeController {
         res.redirect('back');
     }
 
+    async error(req, res) {
+        res.render('error/404error', {
+            layout: './error/404error'
+        })
+    }
+
     async category(req, res) {
         const user = await checkUser(req, res);
         res.render('category', {

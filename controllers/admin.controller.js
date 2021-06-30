@@ -1,5 +1,6 @@
 const User = require('../models/user.model');
 const Song = require('../models/song.model');
+const Comment = require('../models/comment.model');
 
 const moment = require('moment');
 const cloudinary = require('../services/cloudinary');
@@ -100,10 +101,14 @@ class AdminController {
     }
 
     async deleteSong(req, res) {
-        Song.deleteOne({_id: req.params.id})
+        const id = req.params.id;
+        const song = await Song.findOne({_id: id})
+        Song.deleteOne({_id: id})
+            .then(() => Comment.remove({songSlug: song.slug}))
             .then(() => res.redirect('back'))
             .catch(error => {
                 console.log(error);
+                res.render('error/404error', {layout: './error/404error'});
             })
     }
 

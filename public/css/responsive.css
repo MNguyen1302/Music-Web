@@ -78,6 +78,12 @@
     .topsong-wrapper {
         justify-content: center;
     }
+    .extra-control {
+        display: none;
+    }
+    .audio-control-bar {
+        justify-content: center;
+    }
 }
 @media screen and (max-width: 900px) {
     .input-edit input {
@@ -85,6 +91,9 @@
     }
     .search-box {
         flex-grow: 2;
+    }
+    .progress__total {
+        width: 530px;
     }
 }
 @media screen and (max-width: 670px) {
@@ -108,10 +117,14 @@
     }
     .song-detail-lyric,
     .song-detail-extra-wrapper {
-        margin: 30px 40px;
+        margin: 30px;
     }
     .song-detail-extra-wrapper {
         flex-wrap: wrap;
+    }
+    .lyric {
+        padding: 30px;
+        font-size: 1em;
     }
     .song-detail-icon-box {
         justify-content: space-between;
@@ -120,6 +133,9 @@
         display: flex;
         width: 220px;
         padding: 0 10px;
+    }
+    .auth-box {
+        margin: 15px 0;
     }
     .signin-link {
         line-height: 50px;
@@ -166,5 +182,47 @@
     }
     .form-wrapper {
         padding: 100px 15px;
+    }
+
+    /* Player */
+    .progress__total {
+        width: 300px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .song-detail {
+        left: 75px;
+    }
+    .song-detail-comment-box {
+        padding: 20px 15px;
+    }
+    .form-comment {
+        padding: 20px 15px 10px 15px;
+    }
+    .song-comment-avatar img {
+        width: 50px;
+        height: 50px;
+    }
+    hr {
+        margin: 0 15px;
+    }
+    .topsong-title {
+        font-size: 0.9em;
+    }
+    .carousel-wrapper {
+        padding: 30px 20px 0 20px;
+    }
+    .topsong-container {
+        padding: 20px 28px;
+    }
+
+    /* Player */
+    .progress__total {
+        width: 220px;
+    }
+
+    /* Comment */
+    .song-comment-content {
+        padding: 5px 0;
     }
 }

@@ -16,7 +16,7 @@ passport.deserializeUser((googleId, done) => {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'https://music-app-web.herokuapp.com/auth/google/callback'
+    callbackURL: '/auth/google/callback'
     },  (accessToken, refreshToken, object0, profile, done) => {
         if(profile.id) {
             User.findOne({googleId: profile.id})

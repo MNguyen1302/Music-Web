@@ -111,6 +111,7 @@
     }
     .song-detail-main {
         padding: 10px 0;
+        text-align: center;
     }
     .song-detail-image {
         text-align: center;
@@ -148,6 +149,9 @@
     }
     .notifications-container, .change-theme-container {
         margin: 0 3px;
+    }
+    .song-detail-info span:first-child {
+        font-size: 2em;
     }
 
     /* Category */
@@ -191,7 +195,7 @@
 }
 @media screen and (max-width: 450px) {
     .song-detail {
-        left: 75px;
+        left: 65px;
     }
     .song-detail-comment-box {
         padding: 20px 15px;
@@ -215,6 +219,9 @@
     .topsong-container {
         padding: 20px 28px;
     }
+    .song-detail-info span:first-child {
+        font-size: 1em;
+    }
 
     /* Player */
     .progress__total {
@@ -224,5 +231,8 @@
     /* Comment */
     .song-comment-content {
         padding: 5px 0;
+    }
+    .current-time, .duration-time {
+        font-size: 0.95em;
     }
 }
